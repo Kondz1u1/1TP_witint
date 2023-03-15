@@ -1,32 +1,57 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Przesuwający się napis</title>
+    <title>Przesuwająca się droga w canvas</title>
     <style>
-      #przesuwajacy-napis {
-        position: absolute;
-        left: -200px;
-        top: 50px;
-        font-size: 24px;
-        font-weight: bold;
+      canvas {
+        border: 1px solid black;
       }
     </style>
   </head>
   <body>
-    <div id="przesuwajacy-napis">To jest przesuwający się napis!</div>
+    <canvas id="canvas" width="800" height="400"></canvas>
 
     <script>
-      function przesunNapis() {
-        var napis = document.getElementById("przesuwajacy-napis");
-        var pozycja = parseInt(napis.style.left);
-        if (pozycja >= window.innerWidth) {
-          pozycja = -200;
-        }
-        napis.style.left = (pozycja + 5) + "px";
-        setTimeout(przesunNapis, 10);
+      var canvas = document.getElementById("canvas");
+      var ctx = canvas.getContext("2d");
+
+      // Rysuje drogę
+      function rysujDroge() {
+        ctx.beginPath();
+        ctx.moveTo(0, 200);
+        ctx.lineTo(800, 200);
+        ctx.lineWidth = 20;
+        ctx.strokeStyle = "#333";
+        ctx.stroke();
       }
 
-      przesunNapis();
+      // Przesuwa drogę w prawo
+      function przesunDroge(pozycja) {
+        // Wyczyść canvas
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        
+        // Przesuń drogę
+        ctx.setLineDash([30, 20]);
+        ctx.lineDashOffset = pozycja;
+        rysujDroge();
+
+        // Zwiększ pozycję o 5 pikseli
+        pozycja += 5;
+
+        // Przesuń drogę ponownie, gdy dotrze do końca
+        if (pozycja >= 30) {
+          pozycja = 0;
+        }
+
+        // Powtórz funkcję co 10 milisekund
+        setTimeout(function() {
+          przesunDroge(pozycja);
+        }, 10);
+      }
+
+      // Rozpocznij animację
+      rysujDroge();
+      przesunDroge(0);
     </script>
   </body>
 </html>
