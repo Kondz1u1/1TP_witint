@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Przesuwająca się droga w canvas</title>
+    <title>Przesuwająca się droga z samochodem w canvas</title>
     <style>
       canvas {
         border: 1px solid black;
@@ -25,7 +25,18 @@
         ctx.stroke();
       }
 
-      // Przesuwa drogę w prawo
+      // Rysuje samochód
+      function rysujSamochod(pozycja) {
+        ctx.fillStyle = "#F00";
+        ctx.fillRect(pozycja, 160, 80, 40);
+        ctx.beginPath();
+        ctx.arc(pozycja + 20, 240, 15, 0, 2 * Math.PI);
+        ctx.arc(pozycja + 60, 240, 15, 0, 2 * Math.PI);
+        ctx.fillStyle = "#000";
+        ctx.fill();
+      }
+
+      // Przesuwa drogę w prawo i samochód wraz z nią
       function przesunDroge(pozycja) {
         // Wyczyść canvas
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -35,10 +46,13 @@
         ctx.lineDashOffset = pozycja;
         rysujDroge();
 
+        // Przesuń samochód
+        rysujSamochod(pozycja + 200);
+
         // Zwiększ pozycję o 5 pikseli
         pozycja += 5;
 
-        // Przesuń drogę ponownie, gdy dotrze do końca
+        // Przesuń drogę i samochód ponownie, gdy dotrzeją do końca
         if (pozycja >= 30) {
           pozycja = 0;
         }
