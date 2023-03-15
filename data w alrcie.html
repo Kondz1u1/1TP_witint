@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<htm>
+<head>
+    <meta charset="UTF-8">
+    <title>Data - Alert</title>
+</head>
+<body>
+
+    <p id="a"></p>
+    <p id="b"></p>
+    <input type="button" onclick="b1()" value="Alert z Data">
+
+</body>
+</html>
+
+<script>
+var dni = ["Poniedziałek","Wtorek","Środa","Czwartek","Piątek","Sobota","Niedziela"];
+var miesiace = ["Styczen", "Luty", "Marzec", "Kwiecien", "Maj", "Czerwiec", "Lipiec", "Sierpien", "Wrzesien", "Pazdziernik", "Listopad", "Grudzien"];
+
+function b1() {
+
+    var i = new Date();
+    alert(dni[i.getDay() - 1] +  " " + i.getDay() + " " + miesiace[i.getMonth()] + " " + i.getFullYear());
+
+}
+</script>

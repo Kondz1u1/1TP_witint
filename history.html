@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Obiekt History</title>
+  </head>
+  <body>
+    <h1>History</h1>
+    <p>
+      window.history.length: <span id="length"></span><br>
+      <button onclick="window.history.back()">window.history.back()</button>
+      <button onclick="window.history.forward()">window.history.forward()</button><br>
+      <a href="history1.html">1</a>
+    </p>
+    <script>
+      document.getElementById("length").innerText = window.history.length;
+    </script>
+  </body>
+</html>
