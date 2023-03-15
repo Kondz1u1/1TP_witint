@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>House Drawing</title>
+    <style>
+      canvas {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="myCanvas" width="200" height="200"></canvas>
+    <script>
+      const canvas = document.getElementById('myCanvas');
+      const ctx = canvas.getContext('2d');
+      
+      // Draw the roof
+      ctx.beginPath();
+      ctx.moveTo(100, 20);
+      ctx.lineTo(20, 100);
+      ctx.lineTo(180, 100);
+      ctx.closePath();
+      ctx.fillStyle = '#f8d9ac';
+      ctx.fill();
+      
+      // Draw the walls
+      ctx.fillStyle = '#f0e1d2';
+      ctx.fillRect(40, 100, 120, 80);
+      
+      // Draw the door
+      ctx.fillStyle = '#503e2c';
+      ctx.fillRect(80, 140, 40, 40);
+      
+      // Draw the doorknob
+      ctx.beginPath();
+      ctx.arc(110, 160, 3, 0, 2 * Math.PI);
+      ctx.fillStyle = '#f8d9ac';
+      ctx.fill();
+    </script>
+  </body>
+</html>
