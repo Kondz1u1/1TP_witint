@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Przesuwający się napis</title>
+    <style>
+      #przesuwajacy-napis {
+        position: absolute;
+        left: -200px;
+        top: 50px;
+        font-size: 24px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="przesuwajacy-napis">To jest przesuwający się napis!</div>
+
+    <script>
+      function przesunNapis() {
+        var napis = document.getElementById("przesuwajacy-napis");
+        var pozycja = parseInt(napis.style.left);
+        if (pozycja >= window.innerWidth) {
+          pozycja = -200;
+        }
+        napis.style.left = (pozycja + 5) + "px";
+        setTimeout(przesunNapis, 10);
+      }
+
+      przesunNapis();
+    </script>
+  </body>
+</html>
